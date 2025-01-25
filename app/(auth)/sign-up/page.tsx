@@ -14,11 +14,11 @@ import LoadingButton from '@/components/loading-button';
 
 import Link from 'next/link';
 
+import { signUpSchema } from '@/lib/zod';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 
-import { signUpSchema } from '@/lib/zod';
 import { authClient } from '@/auth-client';
 import { useState } from 'react';
 import { useToast } from '@/hooks/use-toast';

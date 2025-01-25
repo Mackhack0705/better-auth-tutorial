@@ -6,8 +6,14 @@ import { openAPI } from 'better-auth/plugins';
 
 export const auth = betterAuth({
     database: prismaAdapter(prisma, {
-        provider: 'mongodb',
+        provider: "mongodb",
     }),
+    socialProviders: {
+        github: {
+            clientId: process.env.GITHUB_CLIENT_ID as string,
+            clientSecret: process.env.GITHUB_CLIENT_SECRETT as string,
+        }
+    },
     plugins: [openAPI()],
     emailAndPassword: {
         enabled: true,
@@ -25,4 +31,6 @@ export const auth = betterAuth({
             });
         }
     }
-} satisfies BetterAuthOptions)
+} satisfies BetterAuthOptions);
+
+export type Session = typeof auth.$Infer.Session;
